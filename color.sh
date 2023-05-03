@@ -9,13 +9,15 @@ color_cyan="\033[36m"
 color_grey="\033[90m"
 color_green="\033[32m"
 
+cursor_left="\033[D"
+cursor_delete="\033[K"
 
-# Moves cursors to the left n characters (default n=80) and clears the line.
+# Moves cursors to the left n characters (default = 50) and clears the line.
 clear_line() {
     local -i n=${1:-50}
     # move cursor to left
 	for (( i=0; i<n; i+=1 )); do
-	    printf '%b' "\033[D"
+	    printf '%b' "$cursor_left"
 	done
-	printf '%b' "\033[K"
+	printf '%b' "$cursor_delete"
 }
